@@ -1,0 +1,30 @@
+﻿<Window x:Class="dbHw1213.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dbHw1213"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+	<DockPanel>
+		<Grid DockPanel.Dock="Top" Background="DarkOrange">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="120"/>
+				<ColumnDefinition Width="120"/>
+				<ColumnDefinition Width="120"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Button Background="Gray" Foreground="BlanchedAlmond" Grid.Column="0" Content="Add User" Width="90" HorizontalAlignment="Center" Click="btnOpenForm"/>
+			<Button Background="Gray" Foreground="BlanchedAlmond" Grid.Column="1" Content="Refresh Data" Width="90" HorizontalAlignment="Center" Click="btnReload"/>
+			<Button Background="Gray" Foreground="BlanchedAlmond" Grid.Column="2" Content="Remove User" Width="90" HorizontalAlignment="Center" Click="btnRemove"/>
+			<Label Grid.Column="4" Content="To edit a user's data, double click any field in the list." FontSize="15"/>
+		</Grid>
+		<DataGrid RowBackground="LightGoldenrodYellow" Background="Gray" x:Name="userTable" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True">
+			<DataGrid.Resources>
+				<Style TargetType="{x:Type DataGridCell}">
+					<EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+				</Style>
+			</DataGrid.Resources>
+		</DataGrid>
+	</DockPanel>
+</Window>
